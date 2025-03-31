@@ -22,7 +22,7 @@ const Home = () => {
         {/* Background Logo */}
         <div className="absolute inset-0 flex justify-center items-center opacity-5 overflow-hidden">
           <img
-            src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+            src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
             alt=""
             className="min-w-[200%] min-h-[200%] object-cover"
           />
@@ -51,7 +51,7 @@ const Home = () => {
               >
                 {/* Logo image */}
                 <img
-                  src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+                  src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
                   alt="Rochela Spa Logo"
                   className="h-auto max-h-[450px]"
                 />

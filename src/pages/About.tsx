@@ -49,7 +49,7 @@ const About = () => {
               >
                 <div className="relative p-8 border-4 border-[#A06B55] border-opacity-30 bg-white bg-opacity-20 rounded-lg">
                   <img
-                    src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+                    src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
                     alt="Rochela Spa Logo"
                     className="h-auto max-w-full"
                   />

@@ -23,7 +23,7 @@ const GiftCards = () => {
         {/* Background Logo */}
         <div className="absolute inset-0 flex justify-center items-center opacity-5 overflow-hidden">
           <img
-            src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+            src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
             alt=""
             className="min-w-[200%] min-h-[200%] object-cover"
           />
@@ -68,7 +68,7 @@ const GiftCards = () => {
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
                     <div className="bg-white/90 p-6 rounded-lg border-2 border-[#A06B55] text-center w-full relative overflow-hidden">
                       <img
-                        src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+                        src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
                         alt="Rochela Spa Logo"
                         className="absolute inset-0 w-[500%] h-[500%] translate-x-[20%] -translate-y-[38%] object-cover opacity-25 transform rotate-90"
                         style={{ objectPosition: "center" }}
@@ -103,7 +103,7 @@ const GiftCards = () => {
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
                     <div className="bg-white/90 p-6 rounded-lg border-2 border-[#A06B55] text-center w-full relative overflow-hidden">
                       <img
-                        src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+                        src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
                         alt="Rochela Spa Logo"
                         className="absolute inset-0 w-[500%] h-[500%] translate-x-[20%] -translate-y-[38%] object-cover opacity-25 transform rotate-90"
                         style={{ objectPosition: "center" }}
@@ -139,7 +139,7 @@ const GiftCards = () => {
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
                     <div className="bg-white/90 p-6 rounded-lg border-2 border-[#A06B55] text-center w-full relative overflow-hidden">
                       <img
-                        src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+                        src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
                         alt="Rochela Spa Logo"
                         className="absolute inset-0 w-[500%] h-[500%] translate-x-[20%] -translate-y-[38%] object-cover opacity-25 transform rotate-90"
                         style={{ objectPosition: "center" }}
@@ -223,7 +223,7 @@ const GiftCards = () => {
                 </div>
               </div>
               <img
-                src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
+                src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
                 alt="Rochela Spa Logo"
                 className="absolute inset-0 w-[300%] h-[300%] -translate-x-[30%] -translate-y-[30%] object-cover opacity-15 transform rotate-90"
               />

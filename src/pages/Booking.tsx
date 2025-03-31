@@ -21,9 +21,9 @@ const Booking = () => {
         {/* Background Logo */}
         <div className="absolute inset-0 flex justify-center items-center opacity-5 overflow-hidden">
           <img
-            src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
-            alt=""
             className="min-w-[200%] min-h-[200%] object-cover"
+            src={import.meta.env.DEV ? "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png" : "/rochelaspavers1.0/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"}
+            alt=""
           />
         </div>
         
