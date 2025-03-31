@@ -93,20 +93,13 @@ const ServicesSection = ({
 
   return (
     <section
-      className="py-20 px-4 md:px-8 lg:px-16 relative"
+      className="py-20 px-4 md:px-8 lg:px-16 bg-[#F8F4F1]"
       id="services"
-      style={{
-        backgroundImage: `url('https://raw.githubusercontent.com/johnytuga1904/GSPA/main/public/spa%20candles%20relax.jpeg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.h2
-            className="text-3xl md:text-4xl font-serif text-white mb-4"
+            className="text-3xl md:text-4xl font-bold text-[#8A5A44] mb-4"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -115,7 +108,7 @@ const ServicesSection = ({
             {title}
           </motion.h2>
           <motion.p
-            className="text-gray-200 max-w-2xl mx-auto text-lg"
+            className="text-[#333333] max-w-2xl mx-auto text-lg"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -126,7 +119,7 @@ const ServicesSection = ({
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

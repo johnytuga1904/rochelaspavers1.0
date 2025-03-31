@@ -38,7 +38,7 @@ const BookingSection = ({
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-serif text-[#2596be] mb-4">
+          <h2 className="spa-title text-3xl md:text-4xl font-serif mb-4">
             {title}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
