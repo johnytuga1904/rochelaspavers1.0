@@ -45,7 +45,7 @@ const Services = () => {
         >
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h1 className="spa-title text-4xl md:text-5xl font-bold">
-              Unsere Leistungen
+              Behandlungen
             </h1>
             <p className="text-xl max-w-3xl mx-auto mt-6 text-[#333333]">
               Entdecken Sie unsere exklusiven Spa-Behandlungen und Wellness-Angebote für Ihr persönliches Wohlbefinden.

@@ -32,7 +32,7 @@ const Navbar = ({ className }: NavbarProps) => {
         {/* Logo */}
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
-            <span className="text-[#A06B55] font-semibold text-xl">Rochela Spa</span>
+            <img src="/logo.png" alt="Rochela Spa" className="h-20 object-contain" />
           </Link>
         </div>
 
@@ -59,7 +59,7 @@ const Navbar = ({ className }: NavbarProps) => {
                   : "text-[#333333] hover:text-[#A06B55] hover:bg-[#A06B55]/5"
               )}
             >
-              Leistungen
+              Behandlungen
             </Link>
             <Link
               to="/gift-cards"
@@ -103,7 +103,7 @@ const Navbar = ({ className }: NavbarProps) => {
                   : "text-[#333333] hover:text-[#A06B55] hover:bg-[#A06B55]/5"
               )}
             >
-              Über uns
+              Über mich
             </Link>
           </div>
         </div>
@@ -151,7 +151,7 @@ const Navbar = ({ className }: NavbarProps) => {
               )}
               onClick={toggleMenu}
             >
-              Leistungen
+              Behandlungen
             </Link>
             <Link
               to="/gift-cards"
@@ -199,7 +199,7 @@ const Navbar = ({ className }: NavbarProps) => {
               )}
               onClick={toggleMenu}
             >
-              Über uns
+              Über mich
             </Link>
           </div>
         </div>

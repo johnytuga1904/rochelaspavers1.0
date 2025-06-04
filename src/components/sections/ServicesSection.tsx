@@ -1,81 +1,76 @@
 import React from "react";
-import ServiceCard from "../services/ServiceCard";
+import ServiceCategory from "../services/ServiceCategory";
 import { motion } from "framer-motion";
 
-interface Service {
+interface ServiceCategoryData {
   id: string;
   title: string;
   description: string;
-  imageUrl: string;
-  duration: string;
-  price: number;
+  icon: string;
+  treatmentCount: number;
 }
 
 interface ServicesSectionProps {
-  services?: Service[];
   title?: string;
   subtitle?: string;
 }
 
 const ServicesSection = ({
-  services = [
-    {
-      id: "1",
-      title: "Japanese Head Spa",
-      description:
-        "Ganzheitliche Kopfhaut- und Haarbehandlung mit Kräuteröl-Massage, Reinigung, Peeling und Haarmaske",
-      imageUrl:
-        "https://raw.githubusercontent.com/johnytuga1904/GSPA/main/public/Japanes%20Head%20Spa.jpg",
-      duration: "90 min",
-      price: 139,
-    },
-    {
-      id: "2",
-      title: "BIAB Maniküre & Pediküre",
-      description: "Innovativer Nagellack mit extra Haltbarkeit",
-      imageUrl:
-        "https://raw.githubusercontent.com/johnytuga1904/GSPA/main/public/diab.jpg",
-      duration: "60 min",
-      price: 65,
-    },
-    {
-      id: "3",
-      title: "Shellac Maniküre & Pediküre",
-      description: "Langanhaltende, natürliche Maniküre",
-      imageUrl:
-        "https://raw.githubusercontent.com/johnytuga1904/GSPA/main/public/shellac.jpg",
-      duration: "60 min",
-      price: 55,
-    },
-    {
-      id: "4",
-      title: "Microblading, Microshading & Kombi Brows",
-      description:
-        "Semipermanente Augenbrauenbehandlung mit feiner Härchenzeichnung oder Schattierung",
-      imageUrl:
-        "https://raw.githubusercontent.com/johnytuga1904/GSPA/main/public/micro-blading.jpg",
-      duration: "90 min",
-      price: 400,
-    },
-    {
-      id: "5",
-      title: "Sugaring Haarentfernung",
-      description: "Sanfte Haarentfernung mit Zuckerpaste",
-      imageUrl:
-        "https://raw.githubusercontent.com/johnytuga1904/GSPA/main/public/sugaring.jpg",
-      duration: "90 min",
-      price: 165,
-    },
-  ],
   title = "Unsere Premium-Dienstleistungen",
-  subtitle = "Genießen Sie unsere sorgfältig zusammengestellte Auswahl an luxuriösen Schönheitsbehandlungen",
+  subtitle = "Wählen Sie eine Kategorie, um die verfügbaren Behandlungen zu sehen",
 }: ServicesSectionProps) => {
+
+  const serviceCategories: ServiceCategoryData[] = [
+    {
+      id: "manicure-pedicure",
+      title: "Maniküre & Pediküre",
+      description: "Professionelle Hand- und Fusspflege",
+      icon: "💅",
+      treatmentCount: 5
+    },
+    {
+      id: "permanent-makeup",
+      title: "Permanent Make-Up",
+      description: "Semipermanente Schönheitsbehandlungen",
+      icon: "✨",
+      treatmentCount: 3
+    },
+    {
+      id: "japanese-head-spa",
+      title: "Japanese Head Spa",
+      description: "Entspannende Kopfhaut- und Haarbehandlungen",
+      icon: "🧘‍♀️",
+      treatmentCount: 3
+    },
+    {
+      id: "sugaring",
+      title: "Damen Sugaring",
+      description: "Sanfte Haarentfernung mit Zuckerpaste",
+      icon: "🍯",
+      treatmentCount: 1
+    },
+    {
+      id: "eyebrow-lash",
+      title: "Augenbrauen & Wimpern",
+      description: "Professionelle Augenbrauen- und Wimpernbehandlungen",
+      icon: "👁️",
+      treatmentCount: 2
+    },
+    {
+      id: "wellness-packages",
+      title: "Wellness Pakete",
+      description: "Kombinierte Behandlungen für das ultimative Spa-Erlebnis",
+      icon: "🌸",
+      treatmentCount: 2
+    }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -118,28 +113,50 @@ const ServicesSection = ({
           </motion.p>
         </div>
 
+        {/* Service Categories */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {services.map((service) => (
-            <motion.div key={service.id} variants={itemVariants}>
-              <ServiceCard
-                title={service.title}
-                description={service.description}
-                imageUrl={service.imageUrl}
-                duration={service.duration}
-                price={service.price}
-                onBookNow={() => {
-                  console.log(`Buchung ${service.title}`);
-                  window.location.href = "/booking";
-                }}
+          {serviceCategories.map((category) => (
+            <motion.div key={category.id} variants={itemVariants}>
+              <ServiceCategory
+                categoryId={category.id}
+                title={category.title}
+                description={category.description}
+                icon={category.icon}
+                treatmentCount={category.treatmentCount}
               />
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          className="text-center mt-12 p-8 bg-white/50 rounded-lg border border-[#D4B59E]/20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <h3 className="text-xl font-semibold text-[#8A5A44] mb-2">
+            Bereit für Ihre Behandlung?
+          </h3>
+          <p className="text-[#333333] mb-4">
+            Klicken Sie auf eine Kategorie, um die verfügbaren Behandlungen zu sehen
+          </p>
+          <div className="flex justify-center">
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-2xl"
+            >
+              ☝️
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

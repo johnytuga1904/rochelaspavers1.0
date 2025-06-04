@@ -26,8 +26,8 @@ const Footer = ({ className }: FooterProps = {}) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo and About */}
           <div className="flex flex-col space-y-4">
-            <div className="mb-2">
-              <span className="text-[#F8F4F1] font-semibold text-xl">Rochela Spa</span>
+            <div className="mb-2 flex justify-center">
+              <img src="/logo.png" alt="Rochela Spa" className="h-32 object-contain" />
             </div>
             <p className="text-sm text-[#F8F4F1] max-w-xs">
               Rochela Spa bietet luxuriöse Wellness-Behandlungen und Entspannungserlebnisse. Wir schaffen einen Ort der Ruhe und des Wohlbefindens für Körper und Geist.
@@ -47,12 +47,11 @@ const Footer = ({ className }: FooterProps = {}) => {
 
           {/* Quick Links */}
           <div className="flex flex-col space-y-3">
-            <h3 className="text-lg font-semibold mb-2 text-[#F8F4F1]">Schnelllinks</h3>
             <Link to="/" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
               Startseite
             </Link>
             <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Leistungen
+              Behandlungen
             </Link>
             <Link to="/booking" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
               Terminbuchung
@@ -62,26 +61,6 @@ const Footer = ({ className }: FooterProps = {}) => {
             </Link>
             <Link to="/contact" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
               Kontakt
-            </Link>
-          </div>
-
-          {/* Services */}
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-lg font-semibold mb-2 text-[#F8F4F1]">Unsere Leistungen</h3>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Japanese Head Spa
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              BIAB Maniküre & Pediküre
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Shellac Maniküre & Pediküre
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Microblading & Microshading
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Sugaring Haarentfernung
             </Link>
           </div>
 

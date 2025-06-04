@@ -28,7 +28,7 @@ const About = () => {
         >
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h1 className="spa-title text-4xl md:text-5xl mb-4">
-              Über uns
+              Über mich
             </h1>
             <p className="spa-subtitle text-xl max-w-3xl mx-auto mt-6">
               Entdecken Sie die Geschichte und Philosophie von Rochela Spa, wo Luxus und Wohlbefinden im Mittelpunkt stehen.
@@ -169,7 +169,7 @@ const About = () => {
                 <Link to="/booking">Termin buchen</Link>
               </Button>
               <Button size="lg" variant="outline" className="border-[#F8F4F1] text-[#F8F4F1] hover:bg-[#F8F4F1]/10" asChild>
-                <Link to="/services">Unsere Leistungen</Link>
+                <Link to="/services">Behandlungen</Link>
               </Button>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { useRoutes, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import ServiceCategory from "./pages/ServiceCategory";
 import Booking from "./pages/Booking";
 import GiftCards from "./pages/GiftCards";
 import Contact from "./pages/Contact";
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:categoryId" element={<ServiceCategory />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/gift-cards" element={<GiftCards />} />
           <Route path="/contact" element={<Contact />} />

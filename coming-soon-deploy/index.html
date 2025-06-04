@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rochela Spa - Coming Soon</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F8F4F1;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .background-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.05;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .background-logo img {
+            min-width: 300%;
+            min-height: 300%;
+            object-fit: cover;
+            transform: translateX(20%);
+        }
+        .decorative-element-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8rem;
+            height: 8rem;
+            background-color: #A06B55;
+            opacity: 0.1;
+            border-bottom-right-radius: 100%;
+            z-index: 0;
+        }
+        .decorative-element-2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 8rem;
+            height: 8rem;
+            background-color: #A06B55;
+            opacity: 0.1;
+            border-top-left-radius: 100%;
+            z-index: 0;
+        }
+        .container {
+            max-width: 800px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            position: relative;
+            min-height: 100vh;
+            margin: 0 auto;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .logo-frame {
+            border: 1px solid #D4B59E;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            background-color: rgba(248, 244, 241, 0.8);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .logo {
+            width: 100%;
+            height: auto;
+        }
+        .tagline {
+            font-size: 1.5rem;
+            color: #8A5A44;
+            margin: 30px 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        .opening {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #A06B55;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        .social {
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        .social a {
+            margin: 0 10px;
+            color: #A06B55;
+            text-decoration: none;
+        }
+        .contact {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #666;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .tagline {
+                font-size: 1.2rem;
+            }
+            .logo-frame {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Logo -->
+    <div class="background-logo">
+        <img src="logo2.png" alt="">
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="decorative-element-1"></div>
+    <div class="decorative-element-2"></div>
+    
+    <div class="container">
+        <div class="logo-frame">
+            <img src="logo2.png" alt="Rochela Spa Logo" class="logo">
+        </div>
+        
+        <div class="tagline">
+            Luxuriöse Schönheitsbehandlungen für Körper und Seele
+        </div>
+        
+        <p class="opening">Wir öffnen unsere Türen im Juni 2025!</p>
+        
+        <div class="contact">
+            Für Anfragen kontaktieren Sie uns bitte unter: <br>
+            <a href="mailto:info@rochela-spa.com">info@rochela-spa.com</a>
+        </div>
+        
+        <div class="social">
+            <a href="https://instagram.com/rochelaspa">Instagram</a>
+            <a href="https://facebook.com/rochelaspa">Facebook</a>
+        </div>
+    </div>
+</body>
+</html>

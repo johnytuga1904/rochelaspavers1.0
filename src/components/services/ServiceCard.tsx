@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Clock, DollarSign } from "lucide-react";
+import { Clock } from "lucide-react";
 
 interface ServiceCardProps {
   title: string;
@@ -46,8 +46,7 @@ const ServiceCard = ({
             <span>{duration}</span>
           </div>
           <div className="flex items-center gap-1">
-            <DollarSign className="h-4 w-4 text-[#D4B59E]" />
-            <span>CHF {price}</span>
+            <span>{title === "Fuss Pediküre" || title === "Maniküre" ? `Ab CHF ${price}` : `CHF ${price}`}</span>
           </div>
         </div>
       </CardHeader>

@@ -92,7 +92,7 @@ const Home = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            Buchen Sie noch heute Ihren Termin und gönnen Sie sich eine wohlverdiente Auszeit. Unsere Experten freuen sich darauf, Sie zu verwöhnen.
+            Buchen Sie noch heute Ihren Termin und gönnen Sie sich eine wohlverdiente Auszeit. Gabriela freut sich darauf, Sie zu verwöhnen.
           </motion.p>
           <motion.div
             initial="hidden"
@@ -114,7 +114,7 @@ const Home = () => {
               className="border-[#A06B55] text-[#A06B55] hover:bg-[#A06B55] hover:text-white"
               asChild
             >
-              <Link to="/services">Unsere Leistungen</Link>
+              <Link to="/services">Behandlungen</Link>
             </Button>
           </motion.div>
         </div>
