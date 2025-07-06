@@ -6,6 +6,7 @@ import Services from "./pages/Services";
 import Booking from "./pages/Booking";
 import GiftCards from "./pages/GiftCards";
 import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
 import routes from "tempo-routes";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/booking" element={<Booking />} />
           <Route path="/gift-cards" element={<GiftCards />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
         {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
       </>

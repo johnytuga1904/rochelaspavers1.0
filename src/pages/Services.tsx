@@ -45,10 +45,10 @@ const Services = () => {
         >
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h1 className="spa-title text-4xl md:text-5xl font-bold">
-              Unsere Leistungen
+              Meine Leistungen
             </h1>
             <p className="text-xl max-w-3xl mx-auto mt-6 text-[#333333]">
-              Entdecken Sie unsere exklusiven Spa-Behandlungen und Wellness-Angebote für Ihr persönliches Wohlbefinden.
+              Entdecken Sie meine exklusiven Spa-Behandlungen und Wellness-Angebote für Ihr persönliches Wohlbefinden.
             </p>
           </div>
         </motion.div>
@@ -57,7 +57,7 @@ const Services = () => {
         <div className="relative z-10">
           <ServicesSection
             title="Luxuriöse Spa-Behandlungen"
-            subtitle="Entspannung und Wohlbefinden für Körper und Geist"
+            subtitle="Entspannung und Wohlbefinden für Körper und Geist - Buchen Sie direkt über Treatwell"
           />
         </div>
 

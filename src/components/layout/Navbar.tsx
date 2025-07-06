@@ -62,6 +62,17 @@ const Navbar = ({ className }: NavbarProps) => {
               Leistungen
             </Link>
             <Link
+              to="/gallery"
+              className={cn(
+                "font-medium text-base px-3 py-2 rounded-md transition-all duration-200",
+                isActive("/gallery") 
+                  ? "text-[#A06B55] bg-[#A06B55]/10 font-semibold" 
+                  : "text-[#333333] hover:text-[#A06B55] hover:bg-[#A06B55]/5"
+              )}
+            >
+              Galerie
+            </Link>
+            <Link
               to="/gift-cards"
               className={cn(
                 "font-medium text-base px-3 py-2 rounded-md transition-all duration-200",
@@ -103,7 +114,7 @@ const Navbar = ({ className }: NavbarProps) => {
                   : "text-[#333333] hover:text-[#A06B55] hover:bg-[#A06B55]/5"
               )}
             >
-              Über uns
+              Über mich
             </Link>
           </div>
         </div>
@@ -154,6 +165,18 @@ const Navbar = ({ className }: NavbarProps) => {
               Leistungen
             </Link>
             <Link
+              to="/gallery"
+              className={cn(
+                "font-medium text-base px-3 py-2 rounded-md transition-all duration-200",
+                isActive("/gallery") 
+                  ? "text-[#A06B55] bg-[#A06B55]/10 font-semibold" 
+                  : "text-[#333333] hover:text-[#A06B55] hover:bg-[#A06B55]/5"
+              )}
+              onClick={toggleMenu}
+            >
+              Galerie
+            </Link>
+            <Link
               to="/gift-cards"
               className={cn(
                 "font-medium text-base px-3 py-2 rounded-md transition-all duration-200",
@@ -199,7 +222,7 @@ const Navbar = ({ className }: NavbarProps) => {
               )}
               onClick={toggleMenu}
             >
-              Über uns
+              Über mich
             </Link>
           </div>
         </div>

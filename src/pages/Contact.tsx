@@ -10,6 +10,7 @@ import {
   Twitter,
   CheckCircle,
   AlertCircle,
+  Loader2,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -23,7 +24,8 @@ const Contact = () => {
     message: "",
   });
 
-  const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormState({
@@ -32,21 +34,40 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      // In a real application, you would send the form data to a server
-      setFormStatus("success");
-      // Reset form after successful submission
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
+    setFormStatus("loading");
+    
+    try {
+      const response = await fetch('http://localhost:3001/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
       });
-    }, 1000);
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setFormStatus("success");
+        // Reset form after successful submission
+        setFormState({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setFormStatus("error");
+        setErrorMessage(data.message || "Es ist ein Fehler aufgetreten.");
+      }
+    } catch (error) {
+      console.error('Fehler beim Senden des Formulars:', error);
+      setFormStatus("error");
+      setErrorMessage("Es konnte keine Verbindung zum Server hergestellt werden. Bitte versuchen Sie es später erneut.");
+    }
   };
 
   const fadeInUp = {
@@ -104,9 +125,9 @@ const Contact = () => {
               </div>
               <h3 className="font-semibold text-lg mb-2 text-[#A06B55]">Besuchen Sie uns</h3>
               <p className="text-[#333333]">
-                Musterstraße 123<br />
-                12345 Musterstadt<br />
-                Deutschland
+                Ottikerweg 4<br />
+                8006 Zürich<br />
+                Schweiz
               </p>
             </div>
 
@@ -116,7 +137,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-[#A06B55]" />
               </div>
               <h3 className="font-semibold text-lg mb-2 text-[#A06B55]">Rufen Sie uns an</h3>
-              <p className="text-[#333333]">+49 123 456789</p>
+              <p className="text-[#333333]">+41 763209852</p>
               <p className="text-[#333333] mt-2">Mo-Fr: 9:00 - 18:00 Uhr</p>
               <p className="text-[#333333]">Sa: 10:00 - 16:00 Uhr</p>
             </div>
@@ -127,16 +148,42 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-[#A06B55]" />
               </div>
               <h3 className="font-semibold text-lg mb-2 text-[#A06B55]">Schreiben Sie uns</h3>
-              <p className="text-[#333333]">info@rochelaspa.de</p>
+              <p className="text-[#333333]">info@rochela-spa.ch</p>
               <div className="flex space-x-3 mt-4">
-                <a href="#" className="text-[#A06B55] hover:text-[#D4B59E] transition-colors">
+                <a 
+                  href="https://www.facebook.com/share/1Hty5mM7s8/?mibextid=wwXIfr" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#A06B55] hover:text-[#D4B59E] transition-colors"
+                  aria-label="Facebook"
+                >
                   <Facebook size={20} />
                 </a>
-                <a href="#" className="text-[#A06B55] hover:text-[#D4B59E] transition-colors">
+                <a 
+                  href="https://www.instagram.com/rochela.spa?igsh=OGx1djN4NGVwM3N4" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#A06B55] hover:text-[#D4B59E] transition-colors"
+                  aria-label="Instagram"
+                >
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="text-[#A06B55] hover:text-[#D4B59E] transition-colors">
-                  <Twitter size={20} />
+                <a 
+                  href="https://www.treatwell.ch/place/rochela-spa/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#A06B55] hover:text-[#D4B59E] transition-colors"
+                  aria-label="Treatwell"
+                >
+                  <svg 
+                    width="20" 
+                    height="20" 
+                    viewBox="0 0 24 24" 
+                    fill="currentColor" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z" />
+                  </svg>
                 </a>
               </div>
             </div>
@@ -151,6 +198,13 @@ const Contact = () => {
           >
             <h2 className="text-2xl font-bold mb-6 text-[#A06B55]">Kontaktformular</h2>
             
+            {formStatus === "loading" && (
+              <div className="mb-6 p-4 bg-blue-50 text-blue-700 rounded-md flex items-center">
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                <span>Ihre Nachricht wird gesendet...</span>
+              </div>
+            )}
+            
             {formStatus === "success" && (
               <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md flex items-center">
                 <CheckCircle className="mr-2 h-5 w-5" />
@@ -161,7 +215,7 @@ const Contact = () => {
             {formStatus === "error" && (
               <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-md flex items-center">
                 <AlertCircle className="mr-2 h-5 w-5" />
-                <span>Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.</span>
+                <span>{errorMessage || "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."}</span>
               </div>
             )}
             
@@ -246,8 +300,16 @@ const Contact = () => {
                 <Button
                   type="submit"
                   className="bg-[#A06B55] hover:bg-[#B27C66] text-white px-6 py-2 rounded-md transition-colors"
+                  disabled={formStatus === "loading"}
                 >
-                  Nachricht senden
+                  {formStatus === "loading" ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Wird gesendet...
+                    </>
+                  ) : (
+                    "Nachricht senden"
+                  )}
                 </Button>
               </div>
             </form>
@@ -255,18 +317,45 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Map Section */}
-      <div className="h-[400px] w-full bg-gray-200 relative">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.409222750825!2d13.372469776926155!3d52.516933065063696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2sBrandenburger%20Tor!5e0!3m2!1sde!2sde!4v1710834992897!5m2!1sde!2sde"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Standort"
-        ></iframe>
+      {/* Map and Location Section */}
+      <div className="w-full bg-[#F8F4F1] py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="spa-title text-3xl text-center mb-8">So finden Sie uns</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Google Maps */}
+            <div className="h-[400px] bg-gray-200 rounded-lg overflow-hidden shadow-md">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.7616767936864!2d8.545069776488936!3d47.38185397116889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479aa0a520a8a6bd%3A0xf1d0d141b2e24447!2sOttikerweg%204%2C%208006%20Z%C3%BCrich%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1720358700000!5m2!1sen!2sch"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Rochela Spa Standort"
+              ></iframe>
+            </div>
+            
+            {/* Location Image/Plan */}
+            <div className="h-[400px] bg-white rounded-lg overflow-hidden shadow-md flex flex-col">
+              <div className="flex-1 p-4 flex flex-col">
+                <h3 className="text-xl font-semibold text-[#A06B55] mb-3">Lageplan</h3>
+                <div className="flex-1 relative">
+                  <img 
+                    src="/images/location adresse.jpg" 
+                    alt="Lageplan Rochela Spa" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="mt-4 text-sm">
+                  <p className="mb-2"><strong>Anfahrt:</strong> Gut erreichbar mit den Tramlinien 10, 9 und Bus 33</p>
+                  <p><strong>Parkmöglichkeiten:</strong> Migros Parkhaus in der Nähe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

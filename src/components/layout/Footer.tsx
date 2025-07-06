@@ -8,7 +8,8 @@ import {
   Mail, 
   MapPin, 
   Phone, 
-  Twitter 
+  Twitter,
+  Music
 } from "lucide-react";
 
 interface FooterProps {
@@ -20,89 +21,66 @@ const Footer = ({ className }: FooterProps = {}) => {
 
   return (
     <footer
-      className={cn("bg-[#A06B55] text-white w-full py-12 px-6 md:px-12 lg:px-24", className)}
+      className={cn("bg-[#A06B55] text-white w-full py-6 px-4 md:px-8 lg:px-12", className)}
     >
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Logo and About */}
-          <div className="flex flex-col space-y-4">
-            <div className="mb-2">
-              <span className="text-[#F8F4F1] font-semibold text-xl">Rochela Spa</span>
+        <div className="flex flex-col items-center mb-4">
+          {/* Kontakt-Überschrift */}
+          <h3 className="text-base font-semibold mb-2 text-[#F8F4F1]">Kontakt</h3>
+          
+          {/* Kontaktinformationen nebeneinander */}
+          <div className="flex flex-wrap justify-center gap-4 mb-3">
+            <div className="flex items-center space-x-1">
+              <MapPin size={14} className="flex-shrink-0 text-[#D4B59E]" />
+              <p className="text-xs text-[#F8F4F1]">Ottikerweg 4, 8006 Zürich, Schweiz</p>
             </div>
-            <p className="text-sm text-[#F8F4F1] max-w-xs">
-              Rochela Spa bietet luxuriöse Wellness-Behandlungen und Entspannungserlebnisse. Wir schaffen einen Ort der Ruhe und des Wohlbefindens für Körper und Geist.
-            </p>
-            <div className="flex space-x-3 mt-4">
-              <a href="#" className="text-[#F8F4F1] hover:text-[#D4B59E] transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-[#F8F4F1] hover:text-[#D4B59E] transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-[#F8F4F1] hover:text-[#D4B59E] transition-colors">
-                <Twitter size={20} />
-              </a>
+            <div className="flex items-center space-x-1">
+              <Phone size={14} className="flex-shrink-0 text-[#D4B59E]" />
+              <p className="text-xs text-[#F8F4F1]">+41 763209852</p>
+            </div>
+            <div className="flex items-center space-x-1">
+              <Mail size={14} className="flex-shrink-0 text-[#D4B59E]" />
+              <p className="text-xs text-[#F8F4F1]">info@rochela-spa.ch</p>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-lg font-semibold mb-2 text-[#F8F4F1]">Schnelllinks</h3>
-            <Link to="/" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Startseite
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Leistungen
-            </Link>
-            <Link to="/booking" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Terminbuchung
-            </Link>
-            <Link to="/gift-cards" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Geschenkgutscheine
-            </Link>
-            <Link to="/contact" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Kontakt
-            </Link>
-          </div>
-
-          {/* Services */}
-          <div className="flex flex-col space-y-3">
-            <h3 className="text-lg font-semibold mb-2 text-[#F8F4F1]">Unsere Leistungen</h3>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Japanese Head Spa
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              BIAB Maniküre & Pediküre
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Shellac Maniküre & Pediküre
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Microblading & Microshading
-            </Link>
-            <Link to="/services" className="text-[#F8F4F1] hover:text-[#D4B59E] hover:underline transition-colors">
-              Sugaring Haarentfernung
-            </Link>
-          </div>
-
-          {/* Contact */}
-          <div className="flex flex-col space-y-4">
-            <h3 className="text-lg font-semibold mb-2 text-[#F8F4F1]">Kontakt</h3>
-            <div className="flex items-start space-x-3">
-              <MapPin size={18} className="mt-0.5 flex-shrink-0 text-[#D4B59E]" />
-              <p className="text-sm text-[#F8F4F1]">Musterstraße 123, 12345 Musterstadt, Deutschland</p>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Phone size={18} className="flex-shrink-0 text-[#D4B59E]" />
-              <p className="text-sm text-[#F8F4F1]">+49 123 456789</p>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Mail size={18} className="flex-shrink-0 text-[#D4B59E]" />
-              <p className="text-sm text-[#F8F4F1]">info@rochelaspa.de</p>
-            </div>
-            <Button className="mt-2 bg-[#F8F4F1] text-[#8A5A44] hover:bg-[#D4B59E] hover:text-[#F8F4F1]" asChild>
-              <Link to="/contact">Kontaktieren Sie uns</Link>
-            </Button>
+          
+          {/* Social Media Icons */}
+          <div className="flex space-x-4 mt-1">
+            <a 
+              href="https://www.facebook.com/share/1Hty5mM7s8/?mibextid=wwXIfr" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#F8F4F1] hover:text-[#D4B59E] transition-colors"
+              aria-label="Facebook"
+            >
+              <Facebook size={18} />
+            </a>
+            <a 
+              href="https://www.instagram.com/rochela.spa?igsh=OGx1djN4NGVwM3N4" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#F8F4F1] hover:text-[#D4B59E] transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram size={18} />
+            </a>
+            <a 
+              href="https://www.treatwell.ch/place/rochela-spa/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#F8F4F1] hover:text-[#D4B59E] transition-colors"
+              aria-label="Treatwell"
+            >
+              <svg 
+                width="18" 
+                height="18" 
+                viewBox="0 0 24 24" 
+                fill="currentColor" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z" />
+              </svg>
+            </a>
           </div>
         </div>
 

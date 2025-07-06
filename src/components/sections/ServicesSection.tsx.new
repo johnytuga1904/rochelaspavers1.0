@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import ServiceCard from "../services/ServiceCard";
+import ServiceCard from "../cards/ServiceCard";
 import CustomTreatwellButton from "../buttons/CustomTreatwellButton";
 
 // Animationsvarianten für Container und Items
@@ -21,7 +21,7 @@ const services = [
       id: "1",
       title: "Russian Manicure mit Shellac",
       description: "Professionelle Maniküre mit Shellac-Finish für langanhaltenden Glanz",
-      detailedDescription: "**Über diesen Service**\nNervt es dich, dass Nagellack nicht lange genug hält? Dann ist Shellac eine gute Alternative für dich. Bei der Maniküre kannst du deine Hände zunächst von abgestorbenen Hautzellen reinigen lassen, und nach einer Pflegebehandlung deine Nägel mit dieser Gel-Variante versehen lassen. Für bis zu 4-wöchigen Halt und Schutz gegen Kratzer und Abblättern!",
+      detailedDescription: "Gel Nails kennen viele aus dem Nagelstudio. Da wird modelliert für die perfekte Form, traditionell mit UV-Licht ausgehärtet und dann hält das schicke Treatment bis nach zwei Wochen der tieferliegende und nachwachsende Naturnagel zur nächsten Behandlung ruft. Bei einer Manicure mit Gel kommt dagegen ein hauchdünner aber superbeständiger Lack auf die vorher gepflegten Naturnägel der Hand. Der innovative Lack hält ohne Risse und Kratzer, lässt sich daheim nachfeilen und wird oft ganz schonend mit LED-Licht ausgehärtet.",
       duration: "1 Std. 15 Min.",
       price: 65,
       category: "Manicure & Pedicure",
@@ -31,7 +31,7 @@ const services = [
       id: "2",
       title: "Russian Manicure mit BIAB",
       description: "Professionelle Maniküre mit BIAB-Verstärkung für natürliche Nägel",
-      detailedDescription: "**Über diesen Service**\nBIAB™ steht für \"Builder In A Bottle™\" und ist ein innovatives Aufbaugel, das direkt aus einer Flasche aufgetragen wird. Es ist selbstnivellierend und wird auf den vorbereiteten Naturnagel aufgetragen, bevor es unter einer UV-Lampe aushärtet. BIAB™ eignet sich hervorragend für Nagelverstärkungen, kurze bis mittellange Modellagen.",
+      detailedDescription: "BIAB™ steht für 'Builder In A Bottle™' und ist ein innovatives Aufbaugel, das direkt aus einer Flasche aufgetragen wird. Es ist selbstnivellierend und wird auf den vorbereiteten Naturnagel aufgetragen, bevor es unter einer UV-Lampe aushärtet. BIAB™ eignet sich hervorragend für Nagelverstärkungen, kurze bis mittellange Modellagen.",
       duration: "1 Std. 15 Min.",
       price: 75,
       category: "Manicure & Pedicure",
@@ -41,7 +41,7 @@ const services = [
       id: "3",
       title: "Pododisk Pedicure mit Shellac",
       description: "Gründliche Pediküre mit Pododisk-Technik und Shellac-Finish",
-      detailedDescription: "**Über diesen Service**\nEin detailliertes Pediküre-Erlebnis lässt keinen Aspekt unberührt und sorgt dafür, dass die Füsse nicht nur gepflegt, sondern auch optimal verwöhnt werden.",
+      detailedDescription: "Ein detailliertes Pediküre-Erlebnis lässt keinen Aspekt unberührt und sorgt dafür, dass die Füsse nicht nur gepflegt, sondern auch optimal verwöhnt werden.",
       duration: "1 Std. 30 Min.",
       price: 75,
       category: "Manicure & Pedicure",
@@ -51,7 +51,7 @@ const services = [
       id: "4",
       title: "Pododisk Pedicure mit BIAB",
       description: "Premium-Pediküre mit Pododisk-Technik und BIAB für langanhaltende Ergebnisse",
-      detailedDescription: "**Über diesen Service**\nEin detailliertes Pediküre-Erlebnis lässt keinen Aspekt unberührt und sorgt dafür, dass die Füße nicht nur gepflegt, sondern auch optimal verwöhnt werden.",
+      detailedDescription: "Ein detailliertes Pediküre-Erlebnis lässt keinen Aspekt unberührt und sorgt dafür, dass die Füße nicht nur gepflegt, sondern auch optimal verwöhnt werden.",
       duration: "1 Std. 30 Min.",
       price: 85,
       category: "Manicure & Pedicure",
@@ -61,7 +61,7 @@ const services = [
       id: "5",
       title: "Russian Manicure & Pododisk Pedicure",
       description: "Komplettbehandlung für Hände und Füße mit Russian Manicure und Pododisk Pedicure",
-      detailedDescription: "**Über diesen Service**\nGel Nails kennen viele aus dem Nagelstudio. Da wird modelliert für die perfekte Form, traditionell mit UV-Licht ausgehärtet und dann hält das schicke Treatment bis nach zwei Wochen der tieferliegende und nachwachsende Naturnagel zur nächsten Behandlung ruft. Bei einer Manicure mit Gel kommt dagegen ein hauchdünner aber superbeständiger Lack auf die vorher gepflegten Naturnägel der Hand. Der innovative Lack hält ohne Risse und Kratzer, lässt sich daheim nachfeilen und wird oft ganz schonend mit LED-Licht ausgehärtet.",
+      detailedDescription: "Gel Nails kennen viele aus dem Nagelstudio. Da wird modelliert für die perfekte Form, traditionell mit UV-Licht ausgehärtet und dann hält das schicke Treatment bis nach zwei Wochen der tieferliegende und nachwachsende Naturnagel zur nächsten Behandlung ruft. Bei einer Manicure mit Gel kommt dagegen ein hauchdünner aber superbeständiger Lack auf die vorher gepflegten Naturnägel der Hand. Der innovative Lack hält ohne Risse und Kratzer, lässt sich daheim nachfeilen und wird oft ganz schonend mit LED-Licht ausgehärtet.",
       duration: "3 Std.",
       price: 140,
       category: "Manicure & Pedicure",
@@ -73,7 +73,7 @@ const services = [
       id: "6",
       title: "Permanent Make-Up - Microblading",
       description: "Präzise, haarstrichgenaue Augenbrauenkorrektur für einen natürlichen Look",
-      detailedDescription: "**Über diesen Service**\nMicroblading ist eine Art des Permanent-Make-ups, bei der mit sehr feinen Stichen die Augenbrauen korrigiert werden. Microblading zeichnet sich vor allem dadurch aus, dass es sehr dezent ist.\n\n**Gut zu Wissen**\nPermanent Make-Up hält in der Regel zwei bis drei Jahre. Um das Resultat noch besser zu schützen, ist die stetige Pflege durch Cremes mit Lichtschutzfaktor hilfreich.\n\n**Einschränkungen**\nBei Hauterkrankungen und allergischen Reaktionen auf Pigmente ist es empfehlenswert, auf ein Permanent Make-Up zu verzichten. Bei anderen Erkrankungen sollte man sich im Vorfeld von einem Experten oder einem Arzt informieren lassen.",
+      detailedDescription: "\n**Über diesen Service**\nMicroblading ist eine Art des Permanent-Make-ups, bei der mit sehr feinen Stichen die Augenbrauen korrigiert werden. Microblading zeichnet sich vor allem dadurch aus, dass es sehr dezent ist.\n\n**Gut zu Wissen**\nPermanent Make-Up hält in der Regel zwei bis drei Jahre. Um das Resultat noch besser zu schützen, ist die stetige Pflege durch Cremes mit Lichtschutzfaktor hilfreich.\n\n**Einschränkungen**\nBei Hauterkrankungen und allergischen Reaktionen auf Pigmente ist es empfehlenswert, auf ein Permanent Make-Up zu verzichten. Bei anderen Erkrankungen sollte man sich im Vorfeld von einem Experten oder einem Arzt informieren lassen.",
       duration: "2 Std. 30 Min.",
       price: 400,
       category: "Permanent Make-Up",
@@ -83,7 +83,7 @@ const services = [
       id: "7",
       title: "Permanent Make-Up - Microshading",
       description: "Pudertechnik für einen weichen, schattigen Augenbrauen-Look",
-      detailedDescription: "**Über diesen Service**\nIm Gegensatz zum Microblading werden beim Microshading die Farbpigmente nicht in Form von geraden Linien, sondern von kleinen Punkten unter die Haut gestochen. Die Augenbrauen werden dadurch \"schattiert\".\n\n**Gut zu Wissen**\nPermanent Make-Up hält in der Regel zwei bis drei Jahre. Um das Resultat noch besser zu schützen, ist die stetige Pflege durch Cremes mit Lichtschutzfaktor hilfreich.\n\n**Einschränkungen**\nBei Hauterkrankungen und allergischen Reaktionen auf Pigmente ist es empfehlenswert, auf ein Permanent Make-Up zu verzichten. Bei anderen Erkrankungen sollte man sich im Vorfeld von einem Experten oder einem Arzt informieren lassen.",
+      detailedDescription: "\n**Über diesen Service**\nIm Gegensatz zum Microblading werden beim Microshading die Farbpigmente nicht in Form von geraden Linien, sondern von kleinen Punkten unter die Haut gestochen. Die Augenbrauen werden dadurch 'schattiert'.\n\n**Gut zu Wissen**\nPermanent Make-Up hält in der Regel zwei bis drei Jahre. Um das Resultat noch besser zu schützen, ist die stetige Pflege durch Cremes mit Lichtschutzfaktor hilfreich.\n\n**Einschränkungen**\nBei Hauterkrankungen und allergischen Reaktionen auf Pigmente ist es empfehlenswert, auf ein Permanent Make-Up zu verzichten. Bei anderen Erkrankungen sollte man sich im Vorfeld von einem Experten oder einem Arzt informieren lassen.",
       duration: "2 Std. 30 Min.",
       price: 400,
       category: "Permanent Make-Up",
@@ -93,7 +93,7 @@ const services = [
       id: "8",
       title: "Permanent Make-Up - Combo Brows",
       description: "Kombination aus Microblading und Microshading für einen perfekten, vollständigen Look",
-      detailedDescription: "**Über diesen Service**\nCombo Brows kombiniert die Vorteile von Microblading und Microshading. Während mit Microblading feine Härchen nachgezeichnet werden, sorgt das Microshading für mehr Fülle und Tiefe. Das Ergebnis ist ein natürlicher und dennoch definierter Look.\n\n**Gut zu Wissen**\nPermanent Make-Up hält in der Regel zwei bis drei Jahre. Um das Resultat noch besser zu schützen, ist die stetige Pflege durch Cremes mit Lichtschutzfaktor hilfreich.\n\n**Einschränkungen**\nBei Hauterkrankungen und allergischen Reaktionen auf Pigmente ist es empfehlenswert, auf ein Permanent Make-Up zu verzichten. Bei anderen Erkrankungen sollte man sich im Vorfeld von einem Experten oder einem Arzt informieren lassen.",
+      detailedDescription: "\n**Über diesen Service**\nIm Gegensatz zum Microblading werden beim Microshading die Farbpigmente nicht in Form von geraden Linien, sondern von kleinen Punkten unter die Haut gestochen. Die Augenbrauen werden dadurch 'schattiert'.\n\n**Gut zu Wissen**\nPermanent Make-Up hält in der Regel zwei bis drei Jahre. Um das Resultat noch besser zu schützen, ist die stetige Pflege durch Cremes mit Lichtschutzfaktor hilfreich.\n\n**Einschränkungen**\nBei Hauterkrankungen und allergischen Reaktionen auf Pigmente ist es empfehlenswert, auf ein Permanent Make-Up zu verzichten. Bei anderen Erkrankungen sollte man sich im Vorfeld von einem Experten oder einem Arzt informieren lassen.",
       duration: "2 Std. 30 Min.",
       price: 400,
       category: "Permanent Make-Up",
@@ -105,7 +105,7 @@ const services = [
       id: "9",
       title: "Damen Sugaring - ganzer Körper",
       description: "Sanfte und effektive Haarentfernung mit Zuckerpaste für den gesamten Körper",
-      detailedDescription: "**Über diesen Service**\nDie Sugaring Methode ist eine sanfte, natürliche und länger anhaltende Haarentfernungsmethode. Das Haar wird in Wuchsrichtung entfernt, weshalb diese Methode weniger schmerzhaft ist als das Waxing.\n\n**Gut zu Wissen**\nUm ein tolles Ergebnis zu garantieren, sollte dein Haar, das entfernt werden soll, vor dem Termin mindestens 0,5 cm lang sein. Das bedeutet im Durchschnitt zwei Wochen wachsen lassen.\n\n**Einschränkungen**\nEs wird empfohlen, die Haut 24 Stunden vor dem Termin nicht zu peelen und zusätzlich auch auf Sonnenbäder oder Solariumgänge zu verzichten. Bitte trage vor der Behandlung keine Creme oder Öl eigenständig auf deine Haut auf.",
+      detailedDescription: "\n**Über diesen Service**\nDie Sugaring Methode ist eine sanfte, natürliche und länger anhaltende Haarentfernungsmethode. Das Haar wird in Wuchsrichtung entfernt, weshalb diese Methode weniger schmerzhaft ist als das Waxing.\n\n**Gut zu Wissen**\nUm ein tolles Ergebnis zu garantieren, sollte dein Haar, das entfernt werden soll, vor dem Termin mindestens 0,5 cm lang sein. Das bedeutet im Durchschnitt zwei Wochen wachsen lassen.\n\n**Einschränkungen**\nEs wird empfohlen, die Haut 24 Stunden vor dem Termin nicht zu peelen und zusätzlich auch auf Sonnenbäder oder Solariumgänge zu verzichten. Bitte trage vor der Behandlung keine Creme oder Öl eigenständig auf deine Haut auf.",
       duration: "1 Std. 30 Min.",
       price: 165,
       category: "Damen Sugaring",
@@ -117,7 +117,7 @@ const services = [
       id: "10",
       title: "Augenbrauenlifting mit zupfen und färben",
       description: "Formgebung, Lifting und Färben der Augenbrauen für einen frischen, offenen Blick",
-      detailedDescription: "**Über diesen Service**\nBei einem Augenbrauenlifting werden deine Härchen verstärkt, sodass die From über mehrere Wochen anhält. Dabei werden die Brauen so formbar gemacht, dass es einfacher ist sie in alle Formen und Richtungen zu stylen.\n\n**Gut zu Wissen**\nWenn du dir mehr Dichte für deine Augenbrauen wünscht, aber von Natur aus eher helle oder lichte Brauen hast, ist ein Microblading eher empfehlenswert.",
+      detailedDescription: "\n**Über diesen Service**\nBei einem Augenbrauenlifting werden deine Härchen verstärkt, sodass die From über mehrere Wochen anhält. Dabei werden die Brauen so formbar gemacht, dass es einfacher ist sie in alle Formen und Richtungen zu stylen.\n\n**Gut zu Wissen**\nWenn du dir mehr Dichte für deine Augenbrauen wünscht, aber von Natur aus eher helle oder lichte Brauen hast, ist ein Microblading eher empfehlenswert.",
       duration: "1 Std. 30 Min.",
       price: 85,
       category: "Augenbrauen & Wimpernbehandlungen",
@@ -127,7 +127,7 @@ const services = [
       id: "11",
       title: "Augenbrauen färben & zupfen",
       description: "Professionelles Färben und Formgebung der Augenbrauen",
-      detailedDescription: "**Über diesen Service**\nWenn du vollere, gut definierte Augenbrauen möchtest, die ein paar Wochen halten, buche einen Termin für die Formung und Färbung.",
+      detailedDescription: "\n**Über diesen Service**\nWenn du vollere, gut definierte Augenbrauen möchtest, die ein paar Wochen halten, buche einen Termin für die Formung und Färbung.",
       duration: "45 Min.",
       price: 60,
       category: "Augenbrauen & Wimpernbehandlungen",
@@ -240,7 +240,6 @@ const ServicesSection: React.FC = () => {
                                 title={service.title}
                                 description={service.description}
                                 imageUrl={service.imageUrl}
-                                detailedDescription={service.detailedDescription}
                                 duration={service.duration}
                                 price={service.price}
                                 onBookNow={() => {

@@ -18,7 +18,7 @@ const Home = () => {
       <Navbar />
 
       {/* Hero Section with Logo Background */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
         {/* Background Logo */}
         <div className="absolute inset-0 flex justify-center items-center opacity-5 overflow-hidden">
           <img
@@ -42,9 +42,9 @@ const Home = () => {
           {/* Center Column - Logo and Text */}
           <div className="md:col-span-10 text-center">
             {/* Logo with decorative elements */}
-            <div className="mb-10 inline-flex justify-center">
+            <div className="mb-10 inline-flex justify-center mt-8 md:mt-12">
               <motion.div
-                className="relative p-8 border-4 border-[#A06B55] border-opacity-30 bg-white bg-opacity-20"
+                className="relative p-10 border-4 border-[#A06B55] border-opacity-30 bg-white bg-opacity-20"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}

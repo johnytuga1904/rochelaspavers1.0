@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { CreditCard, Gift, Mail, User } from "lucide-react";
+import { Gift, Mail, User, Check, Loader2 } from "lucide-react";
+import axios from "axios";
+import TwintPayment from "@/components/payment/TwintPayment";
 
 import {
   Card,
@@ -43,19 +45,28 @@ const formSchema = z.object({
 interface GiftCardSelectorProps {
   onSubmit?: (values: z.infer<typeof formSchema>) => void;
   isSubmitting?: boolean;
+  defaultAmount?: string;
+  onComplete?: () => void;
 }
 
 const GiftCardSelector = ({
   onSubmit = (values) => console.log(values),
   isSubmitting = false,
+  defaultAmount = "100",
+  onComplete,
 }: GiftCardSelectorProps) => {
-  const [selectedDesign, setSelectedDesign] = useState("classic");
+  const [selectedDesign, setSelectedDesign] = useState("rochela");
+  const [step, setStep] = useState<'form' | 'payment' | 'success'>('form');
+  const [formData, setFormData] = useState<z.infer<typeof formSchema> | null>(null);
+  const [sendingEmail, setSendingEmail] = useState(false);
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [giftCardId, setGiftCardId] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      amount: "100",
-      design: "classic",
+      amount: defaultAmount || "100",
+      design: "rochela",
       recipientName: "",
       recipientEmail: "",
       senderName: "",
@@ -63,9 +74,50 @@ const GiftCardSelector = ({
     },
   });
 
-  const handleSubmit = form.handleSubmit(onSubmit);
+  const handleSubmit = form.handleSubmit((data) => {
+    setFormData(data);
+    setStep('payment');
+  });
+  
+  const handlePaymentComplete = async () => {
+    if (formData) {
+      onSubmit(formData);
+      setSendingEmail(true);
+      setEmailError(null);
+      
+      try {
+        // API-Aufruf zum Senden des Gutscheins
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/gift-cards/send`,
+          formData
+        );
+        
+        if (response.data.success) {
+          setGiftCardId(response.data.giftCardId);
+          setStep('success');
+        } else {
+          throw new Error(response.data.message || 'Fehler beim Senden des Gutscheins');
+        }
+      } catch (error) {
+        console.error('Fehler beim Senden des Gutscheins:', error);
+        setEmailError(
+          error instanceof Error 
+            ? error.message 
+            : 'Ein unbekannter Fehler ist aufgetreten. Bitte kontaktieren Sie uns direkt.'
+        );
+      } finally {
+        setSendingEmail(false);
+      }
+    }
+  };
 
   const giftCardDesigns = [
+    {
+      id: "rochela",
+      name: "Rochela Spa",
+      image:
+        "/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png",
+    },
     {
       id: "classic",
       name: "Classic Elegance",
@@ -87,6 +139,82 @@ const GiftCardSelector = ({
   ];
 
   const amountOptions = ["50", "100", "150", "200", "250", "300"];
+  
+  if (step === 'payment' && formData) {
+    return (
+      <div className="w-full max-w-4xl mx-auto bg-cream p-6 rounded-lg shadow-md">
+        <h3 className="text-xl font-semibold mb-4 text-center">Bezahlung des Geschenkgutscheins</h3>
+        
+        {emailError && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
+            <p className="font-medium">Fehler beim Senden des Gutscheins</p>
+            <p className="text-sm">{emailError}</p>
+            <p className="text-sm mt-2">
+              Der Betrag wurde bereits abgebucht. Bitte kontaktieren Sie uns unter 
+              <a href="mailto:info@rochela-spa.ch" className="underline">info@rochela-spa.ch</a> 
+              mit Ihren Gutscheindaten.
+            </p>
+          </div>
+        )}
+        
+        <div className="max-w-md mx-auto">
+          {sendingEmail ? (
+            <div className="text-center py-8">
+              <Loader2 className="h-8 w-8 animate-spin mx-auto text-[#8A5A44]" />
+              <p className="mt-4">Gutschein wird erstellt und versendet...</p>
+            </div>
+          ) : (
+            <TwintPayment 
+              amount={formData.amount} 
+              onPaymentComplete={handlePaymentComplete} 
+            />
+          )}
+        </div>
+        <div className="mt-4 text-center">
+          <button 
+            onClick={() => setStep('form')} 
+            className="text-[#8A5A44] underline text-sm"
+          >
+            Zurück zur Gutscheinauswahl
+          </button>
+        </div>
+      </div>
+    );
+  }
+  
+  if (step === 'success') {
+    return (
+      <div className="w-full max-w-4xl mx-auto bg-cream p-6 rounded-lg shadow-md text-center">
+        <div className="w-16 h-16 bg-[#8A5A44] rounded-full flex items-center justify-center mx-auto mb-4">
+          <Check className="h-8 w-8 text-white" />
+        </div>
+        <h3 className="text-2xl font-semibold mb-2">Vielen Dank für Ihren Kauf!</h3>
+        <p className="mb-6">Ihr digitaler Geschenkgutschein wurde erstellt und an {formData?.recipientEmail} verschickt.</p>
+        <div className="max-w-md mx-auto p-4 bg-white rounded-lg border border-[#D4B59E] mb-6">
+          <p className="text-sm mb-2"><strong>Empfänger:</strong> {formData?.recipientName} ({formData?.recipientEmail})</p>
+          <p className="text-sm mb-2"><strong>Betrag:</strong> CHF {formData?.amount}</p>
+          <p className="text-sm mb-2"><strong>Design:</strong> {giftCardDesigns.find(d => d.id === formData?.design)?.name}</p>
+          {giftCardId && <p className="text-sm"><strong>Gutschein-Nr:</strong> {giftCardId}</p>}
+        </div>
+        <p className="text-sm mb-6">
+          Eine Bestätigung wurde auch an <strong>info@rochela-spa.ch</strong> gesendet.
+        </p>
+        <button 
+          onClick={() => {
+            form.reset();
+            if (onComplete) {
+              onComplete();
+            } else {
+              setStep('form');
+            }
+          }} 
+          className="bg-[#8A5A44] hover:bg-[#6D4836] text-white px-6 py-2 rounded-md"
+        >
+          Weiteren Gutschein erstellen
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto bg-cream p-6 rounded-lg shadow-md">
@@ -251,23 +379,23 @@ const GiftCardSelector = ({
             </div>
           </div>
 
-          <Card className="mt-6 border-[rgb(37,150,190)] bg-[rgba(37,150,190,0.05)]">
+          <Card className="mt-6 border-[#8A5A44] bg-[rgba(138,90,68,0.05)]">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-[#8A5A44]">
                 <Gift className="h-5 w-5" />
-                Gift Card Preview
+                Gutschein-Vorschau
               </CardTitle>
               <CardDescription>
-                Preview of your selected gift card
+                Vorschau Ihres ausgewählten Geschenkgutscheins
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <p className="text-sm font-medium">
-                    Amount:{" "}
-                    <span className="text-[rgb(37,150,190)]">
-                      ${form.watch("amount")}
+                    Betrag:{" "}
+                    <span className="text-[#8A5A44]">
+                      CHF {form.watch("amount")}
                     </span>
                   </p>
                   <p className="text-sm">
@@ -276,15 +404,14 @@ const GiftCardSelector = ({
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CreditCard className="h-6 w-6 text-[rgb(37,150,190)]" />
+                  <Gift className="h-6 w-6 text-[#8A5A44]" />
                   <span className="font-serif text-xl">Rochela Spa</span>
                 </div>
               </div>
             </CardContent>
             <CardFooter>
               <p className="text-xs text-muted-foreground">
-                Gift cards are delivered via email and can be redeemed online or
-                in-store.
+                Geschenkgutscheine werden per E-Mail zugestellt und können für alle Behandlungen eingelöst werden.
               </p>
             </CardFooter>
           </Card>
@@ -292,10 +419,10 @@ const GiftCardSelector = ({
           <div className="flex justify-center">
             <Button
               type="submit"
-              className="bg-[rgb(37,150,190)] hover:bg-[rgb(27,130,170)] text-white px-8 py-2 rounded-md"
+              className="bg-[#8A5A44] hover:bg-[#6D4836] text-white px-8 py-2 rounded-md"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Processing..." : "Purchase Gift Card"}
+              {isSubmitting ? "Verarbeitung..." : "Gutschein kaufen"}
             </Button>
           </div>
         </form>

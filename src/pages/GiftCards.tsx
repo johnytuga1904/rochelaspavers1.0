@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import GiftCardSection from "@/components/sections/GiftCardSection";
 import Footer from "@/components/layout/Footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import GiftCardSelector from "@/components/gift-cards/GiftCardSelector";
+import { X } from "lucide-react";
 
 const GiftCards = () => {
   // Animation variants for scroll reveal
@@ -12,11 +14,47 @@ const GiftCards = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
+  
+  // State für den Gutschein-Kauf-Modal
+  const [showGiftCardModal, setShowGiftCardModal] = useState(false);
+  const [selectedAmount, setSelectedAmount] = useState("");
+  
+  // Funktion zum Öffnen des Gutschein-Kauf-Modals mit einem bestimmten Betrag
+  const openGiftCardModal = (amount: string) => {
+    setSelectedAmount(amount);
+    setShowGiftCardModal(true);
+    // Scroll nach oben, um den Modal gut sichtbar zu machen
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    console.log("Modal geöffnet mit Betrag:", amount);
+  };
 
   return (
     <div className="min-h-screen bg-[#F8F4F1] text-[#333333]">
       {/* Navigation */}
       <Navbar />
+      
+      {/* Gift Card Modal */}
+      {showGiftCardModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+            <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center z-10">
+              <h2 className="text-2xl font-semibold text-[#8A5A44]">Geschenkgutschein kaufen</h2>
+              <button 
+                onClick={() => setShowGiftCardModal(false)}
+                className="p-2 rounded-full hover:bg-gray-100"
+              >
+                <X className="h-6 w-6 text-gray-500" />
+              </button>
+            </div>
+            <div className="p-6">
+              <GiftCardSelector 
+                defaultAmount={selectedAmount}
+                onComplete={() => setShowGiftCardModal(false)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="pt-32 relative">
@@ -46,8 +84,8 @@ const GiftCards = () => {
             <h1 className="spa-title text-4xl md:text-5xl mb-4 text-black">
               Geschenkgutscheine
             </h1>
-            <p className="spa-subtitle text-xl max-w-3xl mx-auto mt-6">
-              Verschenken Sie ein Luxus-Erlebnis im Rochela Spa. Perfekt für Geburtstage, Jubiläen oder einfach so.
+            <p className="spa-subtitle mb-4">
+              Verschenken Sie ein exklusives Wellness-Erlebnis im Rochela Spa. Ideal für besondere Anlässe oder als Überraschung für Ihre Liebsten. Alle Gutscheine werden sofort digital per E-Mail zugestellt.
             </p>
           </div>
         </motion.div>
@@ -74,18 +112,21 @@ const GiftCards = () => {
                         style={{ objectPosition: "center" }}
                       />
                       <div className="relative z-10">
-                        <h3 className="spa-title text-2xl text-black">50 CHF</h3>
+                        <h3 className="spa-title text-2xl text-black">100 CHF</h3>
                         <p className="spa-subtitle text-sm mt-2">Geschenkgutschein</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="spa-title text-xl mb-2">Kleines Verwöhnprogramm</h3>
+                  <h3 className="spa-title text-xl mb-2">Basis Verwöhnprogramm</h3>
                   <p className="spa-subtitle mb-4">
-                    Ideal für eine einzelne Behandlung oder als Zuschuss für ein größeres Spa-Erlebnis.
+                    Perfekt für eine wohltuende Einzelbehandlung oder als Zuschuss für ein umfangreicheres Spa-Erlebnis.
                   </p>
-                  <Button className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white">
+                  <Button 
+                    className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white"
+                    onClick={() => openGiftCardModal("100")}
+                  >
                     Jetzt kaufen
                   </Button>
                 </div>
@@ -109,7 +150,7 @@ const GiftCards = () => {
                         style={{ objectPosition: "center" }}
                       />
                       <div className="relative z-10">
-                        <h3 className="spa-title text-2xl text-black">100 CHF</h3>
+                        <h3 className="spa-title text-2xl text-black">250 CHF</h3>
                         <p className="spa-subtitle text-sm mt-2">Geschenkgutschein</p>
                         <span className="inline-block mt-2 px-3 py-1 bg-[#A06B55]/20 rounded-full text-xs text-[#A06B55] font-medium">Beliebteste Wahl</span>
                       </div>
@@ -117,11 +158,14 @@ const GiftCards = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="spa-title text-xl mb-2">Premium Spa-Erlebnis</h3>
+                  <h3 className="spa-title text-xl mb-2">Premium Wellness-Paket</h3>
                   <p className="spa-subtitle mb-4">
-                    Perfekt für eine umfassende Behandlung oder eine Kombination aus mehreren Services.
+                    Ideal für eine ausgedehnte Behandlung oder eine Kombination mehrerer exklusiver Anwendungen.
                   </p>
-                  <Button className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white">
+                  <Button 
+                    className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white"
+                    onClick={() => openGiftCardModal("250")}
+                  >
                     Jetzt kaufen
                   </Button>
                 </div>
@@ -145,18 +189,21 @@ const GiftCards = () => {
                         style={{ objectPosition: "center" }}
                       />
                       <div className="relative z-10">
-                        <h3 className="spa-title text-2xl text-black">200 CHF</h3>
+                        <h3 className="spa-title text-2xl text-black">400 CHF</h3>
                         <p className="spa-subtitle text-sm mt-2">Geschenkgutschein</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="spa-title text-xl mb-2">Luxus-Paket</h3>
+                  <h3 className="spa-title text-xl mb-2">Luxus-Verwöhnpaket</h3>
                   <p className="spa-subtitle mb-4">
-                    Das ultimative Geschenk für ein vollständiges Spa-Erlebnis mit mehreren exklusiven Behandlungen.
+                    Das ultimative Geschenk für ein umfassendes Spa-Erlebnis mit mehreren exklusiven Behandlungen und besonderer Aufmerksamkeit.
                   </p>
-                  <Button className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white">
+                  <Button 
+                    className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white"
+                    onClick={() => openGiftCardModal("400")}
+                  >
                     Jetzt kaufen
                   </Button>
                 </div>
@@ -216,7 +263,10 @@ const GiftCards = () => {
                     ></textarea>
                   </div>
                   <div className="md:col-span-2">
-                    <Button className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white">
+                    <Button 
+                      className="w-full bg-[#A06B55] hover:bg-[#B27C66] text-white"
+                      onClick={() => openGiftCardModal("")}
+                    >
                       Gutschein erstellen
                     </Button>
                   </div>
@@ -262,7 +312,7 @@ const GiftCards = () => {
                     <div className="w-8 h-8 rounded-full bg-[#A06B55] text-white flex items-center justify-center flex-shrink-0 mr-4">3</div>
                     <div>
                       <h3 className="spa-title text-lg text-black mb-1">Erhalt & Einlösung</h3>
-                      <p className="spa-subtitle">Sie erhalten den Gutschein per E-Mail oder per Post. Der Empfänger kann ihn bei seinem Besuch im Spa einlösen.</p>
+                      <p className="spa-subtitle">Sie erhalten den Gutschein sofort per E-Mail. Der Empfänger kann ihn bei seinem Besuch im Spa einlösen.</p>
                     </div>
                   </div>
                 </div>
@@ -275,7 +325,7 @@ const GiftCards = () => {
                     </div>
                     <div>
                       <h3 className="spa-title text-lg text-black mb-1">Zahlungen & Buchungen</h3>
-                      <p className="spa-subtitle">Bitte beachten Sie: Die Bezahlung der Gutscheine wird sicher über Stripe abgewickelt. Termine und Terminbuchungen werden über die Treatwell-Plattform verwaltet. Nach dem Kauf eines Gutscheins können Sie diesen bei der Buchung über Treatwell einlösen.</p>
+                      <p className="spa-subtitle">Bitte beachten Sie: Die Bezahlung der Gutscheine erfolgt sicher und einfach über TWINT. Termine und Terminbuchungen werden über die Treatwell-Plattform verwaltet. Nach dem Kauf eines Gutscheins können Sie diesen bei der Buchung über Treatwell einlösen.</p>
                     </div>
                   </div>
                 </div>
@@ -304,7 +354,7 @@ const GiftCards = () => {
                   </div>
                   <div>
                     <h3 className="spa-title text-lg text-black mb-1">Wie schnell erhalte ich den Gutschein?</h3>
-                    <p className="spa-subtitle">Digitale Gutscheine werden sofort per E-Mail zugestellt. Gedruckte Gutscheine werden innerhalb von 2-3 Werktagen per Post verschickt.</p>
+                    <p className="spa-subtitle">Digitale Gutscheine werden sofort nach erfolgreicher Bezahlung per E-Mail zugestellt.</p>
                   </div>
                 </div>
               </motion.div>

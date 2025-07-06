@@ -28,7 +28,7 @@ const About = () => {
         >
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h1 className="spa-title text-4xl md:text-5xl mb-4">
-              Über uns
+              Über mich
             </h1>
             <p className="spa-subtitle text-xl max-w-3xl mx-auto mt-6">
               Entdecken Sie die Geschichte und Philosophie von Rochela Spa, wo Luxus und Wohlbefinden im Mittelpunkt stehen.
@@ -49,8 +49,8 @@ const About = () => {
               >
                 <div className="relative p-8 border-4 border-[#A06B55] border-opacity-30 bg-white bg-opacity-20 rounded-lg">
                   <img
-                    src="/ChatGPT Image Mar 31, 2025, 06_26_34 PM.png"
-                    alt="Rochela Spa Logo"
+                    src="/images/gabi about me.jpg"
+                    alt="Gabriela Rocha - Rochela Spa"
                     className="h-auto max-w-full"
                   />
                 </div>
@@ -62,15 +62,18 @@ const About = () => {
                 variants={fadeInUp}
                 className="flex flex-col space-y-4"
               >
-                <h2 className="spa-title text-3xl mb-2">Unsere Geschichte</h2>
+                <h2 className="spa-title text-3xl mb-2">Über Gabriela Rocha</h2>
                 <p className="spa-subtitle">
-                  Rochela Spa wurde 2015 mit einer klaren Vision gegründet: einen Ort zu schaffen, an dem Menschen dem Alltag entfliehen und sich vollständig entspannen können. Was als kleines Studio begann, hat sich zu einem der führenden Wellness-Zentren der Region entwickelt.
+                  Mein Name ist Gabriela Rocha und Schönheit, Stil und Wohlbefinden begleiten mich schon mein ganzes Leben. Nach vielen Jahren Berufserfahrung in der Textil-, Schmuck- und Telekommunikationsbranche habe ich meine Leidenschaft für Ästhetik und persönliche Pflege zum Beruf gemacht und Rochela Spa gegründet.
                 </p>
                 <p className="spa-subtitle">
-                  Unser Name "Rochela" ist von dem portugiesischen Wort für "Fels" abgeleitet und symbolisiert unsere Philosophie: Stabilität und Stärke zu bieten, während wir gleichzeitig Ruhe und Gelassenheit ausstrahlen – wie ein Fels in der Brandung.
+                  Mit einem fundierten Hintergrund durch meine Ausbildungen in Manicure & Pedicure, einem Kosmetik-Diplom sowie einer Permanent Make-up Ausbildung biete ich heute Behandlungen an, die nicht nur äusserlich verschönern, sondern auch von innen wirken.
                 </p>
                 <p className="spa-subtitle">
-                  Über die Jahre haben wir unser Angebot stetig erweitert und verfeinert, immer mit dem Ziel, unseren Kunden das bestmögliche Spa-Erlebnis zu bieten. Heute sind wir stolz darauf, ein umfassendes Spektrum an Behandlungen anzubieten, die von traditionellen Techniken bis hin zu modernen Wellness-Innovationen reichen.
+                  Rochela Spa ist mein Herzensort, ein stilvolles, ruhiges Studio, in dem jede Kundin im Mittelpunkt steht. Ich nehme mir Zeit, arbeite mit höchstem Anspruch an Qualität und liebe es, Menschen zum Strahlen zu bringen.
+                </p>
+                <p className="spa-subtitle font-medium italic mt-2">
+                  Ich freue mich darauf, dich bei Rochela Spa persönlich willkommen zu heissen!
                 </p>
               </motion.div>
             </div>
@@ -87,9 +90,9 @@ const About = () => {
               variants={fadeInUp}
               className="text-center mb-12"
             >
-              <h2 className="spa-title text-3xl mb-2">Unsere Philosophie</h2>
+              <h2 className="spa-title text-3xl mb-2">Meine Philosophie</h2>
               <p className="spa-subtitle text-lg max-w-3xl mx-auto mt-4">
-                Bei Rochela Spa glauben wir, dass wahres Wohlbefinden aus dem Gleichgewicht von Körper und Geist entsteht.
+                Bei Rochela Spa glaube ich, dass wahres Wohlbefinden aus dem Gleichgewicht von Körper und Geist entsteht.
               </p>
             </motion.div>
 
@@ -108,7 +111,7 @@ const About = () => {
                 </div>
                 <h3 className="spa-title text-xl text-center mb-2">Ganzheitlicher Ansatz</h3>
                 <p className="spa-subtitle text-center">
-                  Wir betrachten jeden Kunden als Individuum mit einzigartigen Bedürfnissen und passen unsere Behandlungen entsprechend an.
+                  Ich betrachte jede Kundin als Individuum mit einzigartigen Bedürfnissen und passe meine Behandlungen entsprechend an.
                 </p>
               </motion.div>
 
@@ -126,7 +129,7 @@ const About = () => {
                 </div>
                 <h3 className="spa-title text-xl text-center mb-2">Qualität & Nachhaltigkeit</h3>
                 <p className="spa-subtitle text-center">
-                  Wir verwenden ausschließlich hochwertige, natürliche Produkte und legen Wert auf umweltbewusste Praktiken.
+                  Ich verwende ausschließlich hochwertige, natürliche Produkte und lege Wert auf umweltbewusste Praktiken.
                 </p>
               </motion.div>
 
@@ -144,36 +147,14 @@ const About = () => {
                 </div>
                 <h3 className="spa-title text-xl text-center mb-2">Innovation & Tradition</h3>
                 <p className="spa-subtitle text-center">
-                  Wir verbinden bewährte traditionelle Methoden mit modernsten Techniken und Erkenntnissen.
+                  Ich verbinde bewährte traditionelle Methoden mit modernsten Techniken und Erkenntnissen.
                 </p>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Call to Action */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="bg-[#A06B55] text-white py-16 mt-12"
-        >
-          <div className="max-w-6xl mx-auto px-4 text-center">
-            <h2 className="spa-title text-3xl text-white mb-4">Erleben Sie Rochela Spa</h2>
-            <p className="spa-subtitle text-lg text-white max-w-3xl mx-auto mb-8">
-              Gönnen Sie sich eine Auszeit vom Alltag und entdecken Sie unsere vielfältigen Behandlungen für Körper und Seele.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-[#F8F4F1] text-[#A06B55] hover:bg-[#D4B59E]" asChild>
-                <Link to="/booking">Termin buchen</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="border-[#F8F4F1] text-[#F8F4F1] hover:bg-[#F8F4F1]/10" asChild>
-                <Link to="/services">Unsere Leistungen</Link>
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+        {/* Call to Action wurde entfernt */}
       </main>
 
       {/* Footer */}
