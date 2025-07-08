@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import ServiceCard from "../services/ServiceCard";
 import CustomTreatwellButton from "../buttons/CustomTreatwellButton";
 
+interface ServicesSectionProps {
+  title?: string;
+  subtitle?: string;
+}
+
 // Animationsvarianten für Container und Items
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -195,7 +200,7 @@ const categoryOrder = [
   "Augenbrauen & Wimpernbehandlungen",
 ];
 
-const ServicesSection: React.FC = () => {
+const ServicesSection: React.FC<ServicesSectionProps> = ({ title, subtitle }) => {
   const [openCategory, setOpenCategory] = useState<string>("Manicure & Pedicure");
   const groupedServices = groupServicesByCategory();
   
@@ -207,9 +212,9 @@ const ServicesSection: React.FC = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#8A5A44] mb-4">Leistungen</h2>
+          <h2 className="text-4xl font-bold text-[#8A5A44] mb-4">{title || "Leistungen"}</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Entdecken Sie meine umfangreichen Behandlungen für Ihre Schönheit und Ihr Wohlbefinden.
+            {subtitle || "Entdecken Sie meine umfangreichen Behandlungen für Ihre Schönheit und Ihr Wohlbefinden."}
           </p>
         </div>
 
