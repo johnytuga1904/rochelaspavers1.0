@@ -44,6 +44,23 @@ const Footer = ({ className }: FooterProps = {}) => {
             </div>
           </div>
           
+          {/* Öffnungszeiten */}
+          <h3 className="text-base font-semibold mb-2 mt-4 text-[#F8F4F1]">Öffnungszeiten</h3>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-center">
+            <p className="text-xs text-[#F8F4F1]">Montag</p>
+            <p className="text-xs text-[#F8F4F1]">10:00 - 20:00</p>
+            <p className="text-xs text-[#F8F4F1]">Dienstag</p>
+            <p className="text-xs text-[#F8F4F1]">18:00 - 20:00</p>
+            <p className="text-xs text-[#F8F4F1]">Mittwoch</p>
+            <p className="text-xs text-[#F8F4F1]">18:00 - 20:00</p>
+            <p className="text-xs text-[#F8F4F1]">Donnerstag</p>
+            <p className="text-xs text-[#F8F4F1]">10:00 - 20:00</p>
+            <p className="text-xs text-[#F8F4F1]">Freitag</p>
+            <p className="text-xs text-[#F8F4F1]">10:00 - 20:00</p>
+            <p className="text-xs text-[#F8F4F1]">Samstag</p>
+            <p className="text-xs text-[#F8F4F1]">10:00 - 20:00</p>
+          </div>
+          
           {/* Social Media Icons */}
           <div className="flex space-x-4 mt-1">
             <a 

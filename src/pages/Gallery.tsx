@@ -17,25 +17,10 @@ const galleryData = {
     { id: 6, src: "/images/manicure-pedicure/manicure6.jpg", alt: "Manicure Behandlung 6" },
     { id: 7, src: "/images/manicure-pedicure/pedicure1.jpg", alt: "Pedicure Behandlung" },
   ],
-  "Permanent Make-Up": [
-    { id: 1, src: "/images/permanent-make-up/augenbrauen.jpg", alt: "Permanent Make-Up Augenbrauen" },
-    { id: 2, src: "/images/permanent-make-up/lippen.jpg", alt: "Permanent Make-Up Lippen" },
-    { id: 3, src: "/images/permanent-make-up/eyeliner.jpg", alt: "Permanent Make-Up Eyeliner" },
-    { id: 4, src: "/images/permanent-make-up/vorher-nachher.jpg", alt: "Vor und Nach Behandlung" },
-  ],
-  "Damen Sugaring": [
-    { id: 1, src: "/images/sugaring/behandlung.jpg", alt: "Sugaring Behandlung" },
-    { id: 2, src: "/images/sugaring/beine.jpg", alt: "Sugaring Beine" },
-    { id: 3, src: "/images/sugaring/gesicht.jpg", alt: "Sugaring Gesicht" },
-    { id: 4, src: "/images/sugaring/arme.jpg", alt: "Sugaring Arme" },
-  ],
-  "Augenbrauen & Wimpernbehandlungen": [
-    { id: 1, src: "/images/augenbrauen-wimpern/formung.jpg", alt: "Augenbrauen Formung" },
-    { id: 2, src: "/images/augenbrauen-wimpern/verlaengerung.jpg", alt: "Wimpernverlängerung" },
-    { id: 3, src: "/images/augenbrauen-wimpern/lifting.jpg", alt: "Wimpernlifting" },
-    { id: 4, src: "/images/augenbrauen-wimpern/faerben-brauen.jpg", alt: "Augenbrauen Färben" },
-    { id: 5, src: "/images/augenbrauen-wimpern/faerben-wimpern.jpg", alt: "Wimpern Färben" },
-  ],
+  "Permanent Make-Up": [],
+  "Damen Sugaring": [],
+  "Augenbrauen & Wimpernbehandlungen": [],
+  "Japanese Head Spa": [],
 };
 
 const Gallery = () => {

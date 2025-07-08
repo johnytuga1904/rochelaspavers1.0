@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import GiftCardSelector from "@/components/gift-cards/GiftCardSelector";
-import { X } from "lucide-react";
+import { X, Gift } from "lucide-react";
 
 const GiftCards = () => {
   // Animation variants for scroll reveal
@@ -19,13 +19,17 @@ const GiftCards = () => {
   const [showGiftCardModal, setShowGiftCardModal] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState("");
   
+  // State für den "Bald verfügbar" Modal
+  const [showComingSoonModal, setShowComingSoonModal] = useState(false);
+  
   // Funktion zum Öffnen des Gutschein-Kauf-Modals mit einem bestimmten Betrag
   const openGiftCardModal = (amount: string) => {
     setSelectedAmount(amount);
-    setShowGiftCardModal(true);
+    // Temporär: Zeige "Bald verfügbar" Modal anstatt des Kaufmodals
+    setShowComingSoonModal(true);
     // Scroll nach oben, um den Modal gut sichtbar zu machen
     window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log("Modal geöffnet mit Betrag:", amount);
+    console.log("Coming soon modal geöffnet mit Betrag:", amount);
   };
 
   return (
@@ -51,6 +55,41 @@ const GiftCards = () => {
                 defaultAmount={selectedAmount}
                 onComplete={() => setShowGiftCardModal(false)}
               />
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Bald verfügbar Modal */}
+      {showComingSoonModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full relative">
+            <div className="p-4 border-b flex justify-between items-center">
+              <h2 className="text-2xl font-semibold text-[#8A5A44]">Information</h2>
+              <button 
+                onClick={() => setShowComingSoonModal(false)}
+                className="p-2 rounded-full hover:bg-gray-100"
+              >
+                <X className="h-6 w-6 text-gray-500" />
+              </button>
+            </div>
+            <div className="p-6 text-center">
+              <div className="mb-4 flex justify-center">
+                <Gift className="h-16 w-16 text-[#8A5A44] opacity-70" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Bald verfügbar</h3>
+              <p className="text-gray-600 mb-4">
+                Die Online-Bezahlung für Geschenkgutscheine wird in Kürze verfügbar sein. Wir arbeiten derzeit an der Integration des TWINT-Zahlungssystems.
+              </p>
+              <p className="text-gray-600 mb-6">
+                Für Gutscheine kontaktieren Sie uns bitte direkt unter <span className="text-[#8A5A44] font-medium">info@rochela-spa.ch</span> oder telefonisch.
+              </p>
+              <Button 
+                onClick={() => setShowComingSoonModal(false)}
+                className="bg-[#8A5A44] hover:bg-[#6D4836] text-white px-8 py-2 rounded-md"
+              >
+                Schließen
+              </Button>
             </div>
           </div>
         </div>

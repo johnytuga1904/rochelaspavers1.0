@@ -112,6 +112,38 @@ const services = [
       subcategory: "Ganzer Körper",
     },
     
+    // Japanese Head Spa
+    {
+      id: "13",
+      title: "Japanese Head Spa",
+      description: "Entspannende Kopfhautpflege mit gründlicher Reinigung und Massage",
+      detailedDescription: "**Über diesen Service**\nEine Japanese Head Spa Behandlung Entspannende Kopfhautpflege. Sie umfasst eine gründliche Reinigung, Massage, Aromatherapie und Akupressur, um Haut und Kopfhaut zu revitalisieren und Verspannungen zu lösen. Perfekt für Entspannung und Pflege!",
+      duration: "25 Min.",
+      price: 25,
+      category: "Japanese Head Spa",
+      subcategory: "Blowout/Curls",
+    },
+    {
+      id: "14",
+      title: "Japanese Head Spa ohne Facial",
+      description: "Intensive Kopfhautbehandlung ohne Gesichtsbehandlung",
+      detailedDescription: "**Über diesen Service**\nEine Japanese Head Spa Behandlung Entspannende Kopfhautpflege. Sie umfasst eine gründliche Reinigung, Massage, Aromatherapie und Akupressur, um Haut und Kopfhaut zu revitalisieren und Verspannungen zu lösen. Perfekt für Entspannung und Pflege!",
+      duration: "1 Std. 30 Min.",
+      price: 139,
+      category: "Japanese Head Spa",
+      subcategory: "Japanese Head Spa ohne Facial",
+    },
+    {
+      id: "15",
+      title: "Japanese Head Spa mit Facial",
+      description: "Komplettbehandlung für Kopfhaut und Gesicht",
+      detailedDescription: "**Über diesen Service**\nEine Japanese Head Spa Behandlung Entspannende Kopfhautpflege. Sie umfasst eine gründliche Reinigung, Massage, Aromatherapie und Akupressur, um Haut und Kopfhaut zu revitalisieren und Verspannungen zu lösen. Perfekt für Entspannung und Pflege!",
+      duration: "1 Std. 30 Min.",
+      price: 169,
+      category: "Japanese Head Spa",
+      subcategory: "Japanese Head Spa mit Facial",
+    },
+    
     // Augenbrauen & Wimpernbehandlungen
     {
       id: "10",
@@ -159,6 +191,7 @@ const categoryOrder = [
   "Manicure & Pedicure",
   "Permanent Make-Up",
   "Damen Sugaring",
+  "Japanese Head Spa",
   "Augenbrauen & Wimpernbehandlungen",
 ];
 

@@ -32,3 +32,10 @@ core
 
 .github/
 
+
+# Local Netlify folder
+.netlify
+
+# Environment variables
+.env
+server/.env

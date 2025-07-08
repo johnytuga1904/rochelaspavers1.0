@@ -339,18 +339,34 @@ const Contact = () => {
             
             {/* Location Image/Plan */}
             <div className="h-[400px] bg-white rounded-lg overflow-hidden shadow-md flex flex-col">
-              <div className="flex-1 p-4 flex flex-col">
-                <h3 className="text-xl font-semibold text-[#A06B55] mb-3">Lageplan</h3>
-                <div className="flex-1 relative">
+              <div className="p-4 flex flex-col h-full">
+                <h3 className="text-xl font-semibold text-[#A06B55] mb-2">Lageplan & Öffnungszeiten</h3>
+                <div className="flex justify-center items-center" style={{ height: '40%' }}>
                   <img 
                     src="/images/location adresse.jpg" 
                     alt="Lageplan Rochela Spa" 
-                    className="w-full h-full object-contain"
+                    className="w-auto h-auto max-h-[100%] max-w-[85%] object-contain"
                   />
                 </div>
-                <div className="mt-4 text-sm">
-                  <p className="mb-2"><strong>Anfahrt:</strong> Gut erreichbar mit den Tramlinien 10, 9 und Bus 33</p>
-                  <p><strong>Parkmöglichkeiten:</strong> Migros Parkhaus in der Nähe</p>
+                <div className="mt-2 text-sm">
+                  <p className="mb-1"><strong>Anfahrt:</strong> Gut erreichbar mit den Tramlinien 10, 9 und Bus 33</p>
+                  <p className="mb-3"><strong>Parkmöglichkeiten:</strong> Migros Parkhaus in der Nähe</p>
+                  
+                  <h4 className="font-semibold mb-1 text-[#A06B55]">Öffnungszeiten:</h4>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+                    <p>Montag:</p>
+                    <p>10:00 - 20:00</p>
+                    <p>Dienstag:</p>
+                    <p>18:00 - 20:00</p>
+                    <p>Mittwoch:</p>
+                    <p>18:00 - 20:00</p>
+                    <p>Donnerstag:</p>
+                    <p>10:00 - 20:00</p>
+                    <p>Freitag:</p>
+                    <p>10:00 - 20:00</p>
+                    <p>Samstag:</p>
+                    <p>10:00 - 20:00</p>
+                  </div>
                 </div>
               </div>
             </div>
